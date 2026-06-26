@@ -42,7 +42,7 @@ _Abbildung 2: Inbound Rule für Port 8080._
 #### Schriftliche Antworten auf die vier Fragen.
 
 1. Zeichnen Sie auf, wie das SQL-Statement aus B1 **vor** und **nach** dem Einschleusen des Payloads aussieht. Erklären Sie, warum die Authentifizierung dadurch umgangen wird.
-	- Vor dem Einschleusen des Payloads sieht das SQL Statement folgendermassSELECT * FROM employees WHERE last_name = '' OR 1=1 --' AND auth_tan = '...';	
+	- Vor dem Einschleusen des Payloads sieht das SQL Statement folgendermassen `SELECT * FROM employees WHERE last_name = '' OR 1=1 --' AND auth_tan = '...';`	
 	- Nach dem Injizieren das Payloads sieh der Payload: `SELECT * FROM employees WHERE last_name = 'OR 1:1 --' AND auth_tan = 'OR 1:1';`
 		- Die Authentifizierung wird umgangen, weil die logische Bedingung des `WHERE`-Filter manipuliert wurde. Durch das `OR 1=1` wird die gesamte Abfrage für jeden Datensatz "WAHR". Die Prüfung der `auth_tan` wird durch das Kommentar Zeichen `--` komplett ignoriert und Angreifer müssen keine gültige TAN angeben.
 2. Wie funktionieren **Prepared Statements** (parameterisierte Abfragen) technisch? Warum kann SQL Injection damit nicht mehr funktionieren?
